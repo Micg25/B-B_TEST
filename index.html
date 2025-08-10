@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta property="og:image" content="https://micg25.github.io/B-B_TEST/img/logo.jpg" />
+  <meta name="twitter:image" content="https://micg25.github.io/B-B_TEST/img/logo.jpg" />
+
+  <link rel="icon" type="image/png" href="https://micg25.github.io/B-B_TEST/img/favicon/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="https://micg25.github.io/B-B_TEST/img/favicon/favicon.svg" />
+  <link rel="shortcut icon" href="https://micg25.github.io/B-B_TEST/img/favicon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="https://micg25.github.io/B-B_TEST/img/favicon/apple-touch-icon.png" />
+  <link rel="manifest" href="https://micg25.github.io/B-B_TEST/img/favicon/site.webmanifest" />
+  
+  <title>Etna 1928 Country House — Benvenuti</title>
+  <meta name="description" content="Etna 1928 Country House: camere confortevoli in Sicilia. Prenota ora!" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+  <style>
+    body { 
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
+      line-height:1.6; 
+      padding:30px 20px; 
+      max-width:900px; 
+      margin:auto; 
+      background: #fafafa;
+      color: #333;
+    }
+    header { 
+      margin-bottom:30px; 
+      text-align: center; 
+      color: #2e2e2e;
+    }
+    header h1 {
+      font-weight: 700;
+      font-size: 2.8rem;
+      letter-spacing: 2px;
+      margin-bottom: 8px;
+      font-family: 'Georgia', serif;
+    }
+    header p {
+      font-size: 1.2rem;
+      font-style: italic;
+      color: #555;
+    }
+
+    /* Swiper carosello */
+    .swiper {
+      position: relative;
+      margin-bottom: 40px;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+      height: 700px;
+      cursor: pointer;
+      background: #ddd;
+      transition: box-shadow 0.3s ease;
+    }
+    .swiper:hover {
+      box-shadow: 0 12px 40px rgba(0,0,0,0.2);
+    }
+    .swiper-slide img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 16px;
+    }
+    /* Navigazione frecce */
+    .swiper-button-prev, .swiper-button-next {
+      color: #2e2e2e;
+      background: rgba(255,255,255,0.7);
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      transition: background-color 0.3s ease;
+    }
+    .swiper-button-prev:hover, .swiper-button-next:hover {
+      background: #2e2e2e;
+      color: #fff;
+    }
+
+    /* Overlay per immagine ingrandita */
+    .overlay {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.9);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    .overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .overlay img {
+      max-width: 90%;
+      max-height: 90%;
+      border-radius: 16px;
+      box-shadow: 0 0 30px rgba(255,255,255,0.6);
+      transition: transform 0.3s ease;
+    }
+    .overlay img:hover {
+      transform: scale(1.05);
+    }
+    .overlay .close-btn {
+      position: fixed;
+      top: 25px;
+      right: 35px;
+      font-size: 3rem;
+      color: #eee;
+      cursor: pointer;
+      user-select: none;
+      z-index: 1100;
+      font-weight: 900;
+      text-shadow: 0 0 5px rgba(0,0,0,0.7);
+      transition: color 0.3s ease;
+    }
+    .overlay .close-btn:hover {
+      color: #ff5e57;
+    }
+
+    .rooms-title {
+      font-weight: 700;
+      font-size: 1.6rem;
+      margin: 40px 0 20px;
+      color: #2e2e2e;
+      font-family: 'Georgia', serif;
+      letter-spacing: 1px;
+      text-align: center;
+    }
+    .rooms { 
+      display: grid; 
+      gap: 28px; 
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); 
+    }
+    .room { 
+      border-radius: 16px; 
+      overflow: hidden; 
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08); 
+      text-align: center; 
+      background: #fff;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      cursor: pointer;
+      border: 1px solid #eee;
+    }
+    .room:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 14px 40px rgba(0,0,0,0.15);
+    }
+    .room img { 
+      width: 100%; 
+      height: 220px; 
+      object-fit: cover;
+      display: block; 
+      border-bottom: 1px solid #eee;
+      transition: filter 0.3s ease;
+    }
+    .room:hover img {
+      filter: brightness(1.1);
+    }
+    .room h3 { 
+      margin: 0; 
+      padding: 14px 10px; 
+      background: #fafafa; 
+      font-weight: 600;
+      color: #444;
+      font-size: 1.2rem;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      letter-spacing: 0.03em;
+      user-select: none;
+    }
+    .room a {
+      color: inherit;
+      text-decoration: none;
+      display: block;
+    }
+
+    .contacts {
+      margin-top: 50px;
+      padding: 30px;
+      border-radius: 16px;
+      background: #fefefe;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .contacts h2 {
+      margin-top: 0;
+      text-align: center;
+      font-weight: 700;
+      color: #2e2e2e;
+      font-size: 1.8rem;
+      letter-spacing: 1px;
+    }
+    .contacts p {
+      margin: 12px 0;
+      text-align: center;
+      font-size: 1.15rem;
+      color: #444;
+    }
+    .contacts a {
+      color: #b35c00; /* tonalità elegante bronzo */
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+    .contacts a:hover {
+      color: #e07b00;
+      text-decoration: underline;
+    }
+    .contacts a:visited {
+      color: #7a4300; /* colore visitato più scuro e sobrio */
+    }
+
+    footer { 
+      margin-top:50px; 
+      font-size:1rem; 
+      color:#666; 
+      text-align:center; 
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      letter-spacing: 0.05em;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .swiper {
+        height: 400px;
+      }
+      .room img {
+        height: 180px;
+      }
+    }
+    @media (max-width: 480px) {
+      body {
+        padding: 20px 10px;
+      }
+      .swiper {
+        height: 300px;
+      }
+      .rooms {
+        grid-template-columns: 1fr;
+      }
+      .room img {
+        height: 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Etna 1928 Country House</h1>
+    <p>Camere e spazi accoglienti ai piedi dell'Etna</p>
+  </header>
+
+  <!-- Carosello Swiper -->
+  <div class="swiper" id="hero">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide"><img src="img/principali/principale.jpg" alt="Vista esterna 1" /></div>
+      <div class="swiper-slide"><img src="img/principali/principale2.jpg" alt="Vista esterna 2" /></div>
+      <div class="swiper-slide"><img src="img/principali/principale3.jpg" alt="Vista esterna 3" /></div>
+    </div>
+    <!-- Pulsanti frecce -->
+    <div class="swiper-button-prev" aria-label="Immagine precedente"></div>
+    <div class="swiper-button-next" aria-label="Immagine successiva"></div>
+    <!-- Pagination -->
+    <div class="swiper-pagination"></div>
+  </div>
+
+  <!-- Overlay immagine ingrandita -->
+  <div class="overlay" id="overlay" tabindex="-1">
+    <span class="close-btn" id="closeBtn" aria-label="Chiudi immagine ingrandita">&times;</span>
+    <img src="" alt="Immagine ingrandita" id="overlayImage" />
+  </div>
+
+  <!-- Titolo sezione camere -->
+  <div class="rooms-title">Visita la struttura:</div>
+
+  <!-- Sezione camere -->
+  <section class="rooms">
+
+    <div class="room">
+      <a href="matrimoniale.html">
+        <img src="img/camere/matrimoniale1.jpg" alt="Camera Matrimoniale" />
+        <h3>Camere da letto</h3>
+      </a>
+    </div>
+    <div class="room">
+      <a href="cucina.html">
+        <img src="img/cucina/cucina1.jpg" alt="Cucina" />
+        <h3>Cucina</h3>
+      </a>
+    </div>
+    <div class="room">
+      <a href="bagno.html">
+        <img src="img/bagni/bagno1.jpg" alt="Bagno" />
+        <h3>Bagni</h3>
+      </a>
+    </div>
+  </section>
+
+  <!-- Sezione contatti -->
+  <section class="contacts">
+    <h2>Contatti</h2>
+    <p>Email: <a href="mailto:info@etna1928.it">info@etna1928.it</a></p>
+    <p>Telefono: <a href="tel:+390000000000">+39 000 000 0000</a></p>
+    <p>Guarda le nostre recensioni su Booking: <a href="https://www.booking.com/hotel/it/satellite-dell-39-etna.it.html#tab-reviews" target="_blank" rel="noopener">Booking.com</a></p>
+  </section>
+
+  <footer>
+    <p>© Etna 1928 Country House</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+  <script>
+    const swiper = new Swiper("#hero", {
+      loop: true,
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+      autoplay: {
+        delay: 4000,
+        disableOnInteraction: false,
+      }
+    });
+
+    // Zoom immagine su click
+    const hero = document.getElementById('hero');
+    const overlay = document.getElementById('overlay');
+    const overlayImage = document.getElementById('overlayImage');
+    const closeBtn = document.getElementById('closeBtn');
+
+    hero.addEventListener('click', (e) => {
+      // Solo se clicco sull'immagine
+      if(e.target.tagName === 'IMG') {
+        overlayImage.src = e.target.src;
+        overlayImage.alt = e.target.alt;
+        overlay.classList.add('active');
+        overlay.focus();
+      }
+    });
+
+    // Chiudi overlay cliccando sulla X o fuori immagine
+    closeBtn.addEventListener('click', () => {
+      overlay.classList.remove('active');
+      overlayImage.src = '';
+    });
+    overlay.addEventListener('click', e => {
+      if (e.target === overlay) {
+        overlay.classList.remove('active');
+        overlayImage.src = '';
+      }
+    });
+
+    // Chiudi overlay con ESC
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape' && overlay.classList.contains('active')) {
+        overlay.classList.remove('active');
+        overlayImage.src = '';
+      }
+    });
+  </script>
+</body>
+</html>
+
+
+
